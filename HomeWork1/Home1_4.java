@@ -3,7 +3,7 @@ package HomeWork1;
 public class Home1_4 {
     public static void main(String[] args) {
 
-        boolean weekday = true;
+        boolean weekday = false;
         boolean vacation = false;
 
        if(sleepIn(weekday,vacation)){
