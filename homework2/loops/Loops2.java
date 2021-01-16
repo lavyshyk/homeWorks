@@ -17,11 +17,11 @@ public class Loops2 {
 
     public static void main(String[] args) {
 
-        String s = "jhgjhgkj";//args[0].trim();
+        String s = args[0].trim();
 
 
 
-        if(matches("[А-я]+ | \\w",s)){
+        if(matches("[-]?[А-яA-z]+" ,s)){
             System.out.println("Введено не число");
             return;
         }
@@ -29,17 +29,12 @@ public class Loops2 {
             System.out.println("Введено отрицательное число");
             return;
         }
-
-
-
-
-
         if (matches("\\d++", s)) {
 
                 char[] chars = s.toCharArray();
                 int[] array = getArrayLong(chars);
                 long res = getMul(array);
-               // System.out.print("Ввели " + s + ", доджно получиться в консоли :  ");
+
                 for (int i = 0; i < array.length; i++) {
                     System.out.print(array[i]);
                     if (i < array.length - 1) {
