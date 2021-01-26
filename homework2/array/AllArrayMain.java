@@ -28,21 +28,21 @@ public class AllArrayMain {
         //int[] container = arrayFromConsole();
         int[] container = arrayRandom(5, 10);
 
-        arrayByDoWhile(1, container);
-        arrayByDoWhile(2, container);
-        arrayByDoWhile(3, container);
+        arrayByDoWhile(M1, container);
+        arrayByDoWhile(M2, container);
+        arrayByDoWhile(M3, container);
 
-        arrayByWhile(1, container);
-        arrayByWhile(2, container);
-        arrayByWhile(3, container);
+        arrayByWhile(M1, container);
+        arrayByWhile(M2, container);
+        arrayByWhile(M3, container);
 
-        arrayByFor(1, container);
-        arrayByFor(2, container);
-        arrayByFor(3, container);
+        arrayByFor(M1, container);
+        arrayByFor(M2, container);
+        arrayByFor(M3, container);
 
-        arrayForeach(1, container);
-        arrayForeach(2, container);
-        arrayForeach(3, container);
+        arrayForeach(M1, container);
+        arrayForeach(M2, container);
+        arrayForeach(M3, container);
 
     }
     public static int[] arrayFromConsole(){      // пункт 2.2
