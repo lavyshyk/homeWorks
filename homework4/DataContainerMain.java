@@ -2,9 +2,9 @@ package homework4;
 
 import java.util.Comparator;
 
-public class DataContainerain {
+public class DataContainerMain {
     public static void main(String[] args) {
-        Integer i[] = {1, 2, 8, 9, null, null};
+        Integer i[] = {1, 2, 8, 9, null, null, 86};
 
 
         String s[] = {"dfg", "jhjg", null, null};
@@ -53,13 +53,19 @@ public class DataContainerain {
           }
         };
 
+        System.out.println(in1.toString());
         in1.sort(doubleComparator);
         System.out.println(in1.toString());
         in1.add(96.69);
         DataContainer.sort(in1, doubleComparator);
         System.out.println(in1.toString());
 
-        in.delete((Integer) 5);
+        System.out.println(in.toString());
+        in.delete((Integer) 9);
+        System.out.println(in.toString());
+
+        System.out.println(in.get(5));
+        System.out.println(in.delete(2));
         System.out.println(in.toString());
 
     }
