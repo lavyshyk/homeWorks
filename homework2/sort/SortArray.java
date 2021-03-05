@@ -57,7 +57,7 @@ public class SortArray {
 
 
     }
-    
+
 
     public static void getBubbleSort(int[] array){
         boolean flag = true;

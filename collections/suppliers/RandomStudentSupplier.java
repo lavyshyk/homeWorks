@@ -1,12 +1,9 @@
 package collections.suppliers;
 
 import collections.core.GlobalCounter;
-import collections.core.random.api.Java7Random;
 import collections.dto.Student;
-import collections.core.random.api.FakeRandom;
 import collections.core.random.api.IRandom;
 
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Supplier;
 
 public class RandomStudentSupplier implements Supplier<Student> {
@@ -14,7 +11,7 @@ public class RandomStudentSupplier implements Supplier<Student> {
     private final IRandom rnd;
     private GlobalCounter counter;
 
-    public RandomStudentSupplier(GlobalCounter counter, IRandom rnd) {
+    public RandomStudentSupplier(GlobalCounter counter, IRandom rnd, int i, int i1) {
         this.counter = counter;
         this.rnd = rnd;
     }

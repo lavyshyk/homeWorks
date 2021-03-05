@@ -2,24 +2,32 @@ package homework1;
 
 import java.util.Scanner;
 
-public class Home1_5_switch {
-    public static void main(String[] args) {
+public class Home1_5_switch implements ICommunicationPrinter {
+   //public static void main(String[] args) {
+   //
+   //    Scanner in = new Scanner(System.in);
+   //    System.out.print("Введите Ваше имя :");
+   //    String name = in.nextLine();
+   //    System.out.println();
+   //
+   //
+   //
+   //   in.close();
+   //}
 
-        Scanner in = new Scanner(System.in);
-        System.out.print("Введите Ваше имя :");
-        String name = in.nextLine();
-        System.out.println();
-
-       switch (name){
-           case "Вася" :
-               System.out.println("Привет!");
-           case "Анастасия":
-               System.out.println("Я тебя так долго ждал");
-               break;
-           default:
-               System.out.println("Добрый день, а вы кто?");
-       }
-
-       in.close();
+    @Override
+    public String welcome(String name) {
+        String result = "";
+        switch (name){
+        case "Вася" :
+            result = "Привет!" + "\n" + "Я тебя так долго ждал";
+            break;
+        case "Анастасия":
+            result = "Я тебя так долго ждал";
+            break;
+        default:
+            result = "Добрый день, а вы кто?";;
+    }
+        return result;
     }
 }

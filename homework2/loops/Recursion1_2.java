@@ -7,26 +7,26 @@ package homework2.loops;
  */
 
 public class Recursion1_2 {
-    public static void main(String[] args) {
-
-        long num = Long.parseLong(args[0]);
-
-        if(num >= 0 && num < Long.MAX_VALUE) {
-            if (num == 0) {
-                System.out.print("0!");
-            }
-
-            for (int i = 0; i < num; ) {
-                System.out.print(++i);
-                if (i < num) {
-                    System.out.print(" * ");
-                }
-            }
-
-            System.out.println(" = " + getFactorialByRecur(num));
-
-        }
-    }
+  // public static void main(String[] args) {
+  //
+  //     long num = Long.parseLong(args[0]);
+  //
+  //     if(num >= 0 && num < Long.MAX_VALUE) {
+  //         if (num == 0) {
+  //             System.out.print("0!");
+  //         }
+  //
+  //         for (int i = 0; i < num; ) {
+  //             System.out.print(++i);
+  //             if (i < num) {
+  //                 System.out.print(" * ");
+  //             }
+  //         }
+  //
+  //         System.out.println(" = " + getFactorialByRecur(num));
+  //
+  //     }
+  // }
 
     public static long getFactorialByRecur(long n){
         long f = n;

@@ -15,11 +15,11 @@ import java.util.Arrays;
 
 public class ArrayMain2 {
     public static void main(String[] args) {
-       // int[] ar = {1,5,9,8,3,9};
+        // int[] ar = {1,5,9,8,3,9};
         //int[] arr = subarrayFromArray(2, 4, ar);
         //System.out.println(Arrays.toString(arr));
 
-    }
+   }
 
     public static int sumFromArray(int[] array){ //2.4.1 Сумма четных положительных элементов массива
         int sum = 0;

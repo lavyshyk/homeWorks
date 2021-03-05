@@ -7,32 +7,32 @@ package homework2.loops;
  */
 
 public class Loops1_1 {
-    public static void main(String[] args) {
-
-        long num = Long.parseLong(args[0]);
-
-        if(num >= 0 && num < Long.MAX_VALUE){
-            if (num == 0){
-                System.out.print("0!");
-            }
-            for (int i = 0; i < num ; ) {
-                System.out.print(++i);
-                if(i < num ){
-                    System.out.print(" * ");
-                }
-            }
-
-
-            System.out.println(  " = " + getFactorial(num));
-
-            // вызов статического метод из другого класса(одного пакета)
-            System.out.println("Получение результата через рекурсивный метод = " + Recursion1_2.getFactorialByRecur(num));
-
-        }else System.out.println("Отрицательное число  или число больше - " + Long.MAX_VALUE);
-
-
-
-    }
+   // public static void main(String[] args) {
+   //
+   //     long num = Long.parseLong(args[0]);
+   //
+   //     if(num >= 0 && num < Long.MAX_VALUE){
+   //         if (num == 0){
+   //             System.out.print("0!");
+   //         }
+   //         for (int i = 0; i < num ; ) {
+   //             System.out.print(++i);
+   //             if(i < num ){
+   //                 System.out.print(" * ");
+   //             }
+   //         }
+   //
+   //
+   //         System.out.println(  " = " + getFactorial(num));
+   //
+   //         // вызов статического метод из другого класса(одного пакета)
+   //         System.out.println("Получение результата через рекурсивный метод = " + Recursion1_2.getFactorialByRecur(num));
+   //
+   //     }else System.out.println("Отрицательное число  или число больше - " + Long.MAX_VALUE);
+   //
+   //
+   //
+   // }
 
     public static long getFactorial(long n){
 

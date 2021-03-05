@@ -235,5 +235,5 @@ public class DataContainer<T> implements Comparator<T>, Iterable<T> {
         action.accept(elem);
     }
 
-    
+
 }

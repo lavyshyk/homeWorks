@@ -15,39 +15,39 @@ import static java.util.regex.Pattern.matches;
 public class Loops2 {
 
 
-    public static void main(String[] args) {
-
-        String s = args[0].trim();
-
-
-
-        if(matches("[-]?[А-яA-z]+" ,s)){
-            System.out.println("Введено не число");
-            return;
-        }
-        if(matches("[-]\\d+",s)){
-            System.out.println("Введено отрицательное число");
-            return;
-        }
-        if (matches("\\d++", s)) {
-
-                char[] chars = s.toCharArray();
-                int[] array = getArrayLong(chars);
-                long res = getMul(array);
-
-                for (int i = 0; i < array.length; i++) {
-                    System.out.print(array[i]);
-                    if (i < array.length - 1) {
-                        System.out.print(" * ");
-                    }
-                }
-                System.out.println(" = " + res);
-
-        }else System.out.println("Введено не целое число");
-
-
-
-    }
+  //public static void main(String[] args) {
+  //
+  //    String s = args[0].trim();
+  //
+  //
+  //
+  //    if(matches("[-]?[А-яA-z]+" ,s)){
+  //        System.out.println("Введено не число");
+  //        return;
+  //    }
+  //    if(matches("[-]\\d+",s)){
+  //        System.out.println("Введено отрицательное число");
+  //        return;
+  //    }
+  //    if (matches("\\d++", s)) {
+  //
+  //            char[] chars = s.toCharArray();
+  //            int[] array = getArrayLong(chars);
+  //            long res = getMul(array);
+  //
+  //            for (int i = 0; i < array.length; i++) {
+  //                System.out.print(array[i]);
+  //                if (i < array.length - 1) {
+  //                    System.out.print(" * ");
+  //                }
+  //            }
+  //            System.out.println(" = " + res);
+  //
+  //    }else System.out.println("Введено не целое число");
+  //
+  //
+  //
+  //}
     public static int[] getArrayLong(char[] charsArr){
         int[] arr = new int[charsArr.length];
         for (int i = 0; i < charsArr.length; i++) {

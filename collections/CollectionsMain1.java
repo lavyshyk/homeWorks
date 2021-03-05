@@ -1,16 +1,11 @@
 package collections;
 
 import collections.comparators.StudentAgeAndScoreComparator;
-import collections.comparators.StudentNameComparator;
-import collections.comparators.StudentScoreComparator;
 import collections.core.GlobalCounter;
 import collections.core.random.api.Java7Random;
-import collections.core.random.api.Java8Random;
 import collections.dto.Student;
 import collections.predicate.StudentAgeAndScorePredicate;
 import collections.suppliers.RandomStudentSupplier;
-import collections.core.random.api.FakeRandom;
-import collections.core.random.api.IRandom;
 import collections.utils.SortUtils;
 
 import java.util.ArrayList;
@@ -22,8 +17,8 @@ public class CollectionsMain1 {
     public static void main(String[] args) {
         List<Student> data = new ArrayList<>();
 
-        IRandom rnd = new Java7Random();
-        Supplier<Student> supplier = new RandomStudentSupplier(new GlobalCounter(), new Java7Random());
+       // IRandom rnd = new Java7Random();
+        Supplier<Student> supplier = new RandomStudentSupplier(new GlobalCounter(), new Java7Random(), 3, 10);
 
         do {
 
@@ -41,6 +36,7 @@ public class CollectionsMain1 {
             }
 
         }
+
 
 
          //  4. Отсортировать отфильтровандентов по имени, от меньшему к большему. Выестиных сту топ 10
