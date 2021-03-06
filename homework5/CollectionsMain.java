@@ -48,7 +48,7 @@ public class CollectionsMain {
          * test
          */
 
-        String word = "слово";
+        String word = "мир";
         EasySearch easySearch = new EasySearch();
         long count = easySearch.search(text, word);
 
