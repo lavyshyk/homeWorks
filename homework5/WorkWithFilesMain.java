@@ -3,6 +3,7 @@ package homework5;
 import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
@@ -20,44 +21,77 @@ import java.util.Scanner;
 
 public class WorkWithFilesMain {
     public static void main(String[] args) {
+
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Вееите адрес папки с файломи");
-        String nameDir = scanner.nextLine();
+        String nameDir = "";
+        File dir;
+        boolean flag;
 
-        File dir = new File(nameDir);
-       if(dir.isDirectory()){
-           File[] files = dir.listFiles();
-           for (File file : files) {
-               System.out.println(file.getName());
-           }
-       }
+        do{
+            dir = new File(getStringFromCommandLine(scanner));
+            if(!dir.exists()){
+                System.out.println("Неправильное имя или файла не существует.\nBведите еще раз ---->");
+                flag = true;
+            }else{
+                flag = false;
+            }
+        }while (flag);
 
-        System.out.println("Выберите файл для работы  или q для окончания работы");
-        String enter = scanner.nextLine();
-       File fileName = new File(enter);
+        if(dir.isDirectory()) {
+            File[] listFiles = dir.listFiles();
+            for (File file : listFiles) {
+                System.out.println(file);
+            }
+        }
+        
+        System.out.println("-----------------------------------------------------");
+        System.out.println("Выберите файл для работы");
+        String enter = getStringFromCommandLine(scanner);
 
+        File fileName = new File(enter);
 
-           System.out.println("Файл найден и готов к работе \n " +
-                   "Введите слово для поиска в тексте");
-           String word = scanner.nextLine();
-           long contWord = 0;
-           try {RegExSearch search = new RegExSearch();
-               String text =Files.readString(
-                       Path.of(fileName.getAbsolutePath()));
-                contWord = search.search(text,word);
-           } catch (IOException e) {
-               e.printStackTrace();
-           }
-           
-           try (FileWriter fileWriter = new FileWriter("result.txt")){
-               fileWriter.write(fileName + " - " + word + " - " + contWord);
-               fileWriter.flush();
-           } catch (IOException e) {
-               e.printStackTrace();
-           }
+        String text = "";
 
+        long contWord = 0;
+        try {
+            text = Files.readString(Path.of(String.valueOf(fileName)),
+                    Charset.defaultCharset());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
+        System.out.println("Файл найден и готов к работе  ");
+        String word = "";
+        while (!word.equals("q")){
+            System.out.println("Введите слово для поиска в тексте или q для окончания работы");
+            System.out.println("-------------------------------------------------------------");
+            word = getStringFromCommandLine(scanner);
+            if(!word.equals("q")) {
+                RegExSearch search = new RegExSearch();
+                contWord = search.search(text, word);
+                File fileResult = new File("result.txt");
+
+                try (FileWriter fileWriter = new FileWriter(fileResult, fileResult.exists())) {
+                    fileWriter.write(fileName.getName() + " - " + word + " - " + contWord + "\n");
+                    fileWriter.flush();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
+
+    /**
+     *
+     * @param scanner
+     * @return String  - введенная пользователем строка
+     */
+    public static String getStringFromCommandLine(Scanner scanner) {
+        return scanner.nextLine();
+    }
+
+
 
 }
