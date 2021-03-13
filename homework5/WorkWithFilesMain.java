@@ -1,12 +1,10 @@
-package homework5;
+ package homework5;
+
 
 import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -22,56 +20,46 @@ import java.util.Scanner;
 public class WorkWithFilesMain {
     public static void main(String[] args) {
 
+
         Scanner scanner = new Scanner(System.in);
+        File fileResult = new File("result.txt");
 
         System.out.println("Вееите адрес папки с файломи");
-        String nameDir = "";
-        File dir;
-        boolean flag;
-
-        do{
-            dir = new File(getStringFromCommandLine(scanner));
-            if(!dir.exists()){
-                System.out.println("Неправильное имя или файла не существует.\nBведите еще раз ---->");
-                flag = true;
-            }else{
-                flag = false;
-            }
-        }while (flag);
-
+        File dir = tryGetNameOfDir(scanner);
         if(dir.isDirectory()) {
             File[] listFiles = dir.listFiles();
             for (File file : listFiles) {
                 System.out.println(file);
             }
         }
-        
         System.out.println("-----------------------------------------------------");
         System.out.println("Выберите файл для работы");
-        String enter = getStringFromCommandLine(scanner);
-
-        File fileName = new File(enter);
-
+        File fileName = null;
         String text = "";
-
         long contWord = 0;
-        try {
-            text = Files.readString(Path.of(String.valueOf(fileName)),
-                    Charset.defaultCharset());
-        } catch (IOException e) {
-            e.printStackTrace();
+        while (text.equals("")){
+            fileName = new File(getStringFromCommandLine(scanner));
+
+            try {
+                text = Files.readString(Path.of(String.valueOf(fileName)),
+                        Charset.defaultCharset());
+            } catch (IOException e) {
+                System.out.println("Неправильное имя или не существует.\n"
+                                   + "Bведите еще раз ---->");
+                text = "";
+            }
         }
+
 
         System.out.println("Файл найден и готов к работе  ");
         String word = "";
         while (!word.equals("q")){
-            System.out.println("Введите слово для поиска в тексте или q для окончания работы");
+            System.out.println("Введите слово для поиска в тексте или \"q\" для окончания работы");
             System.out.println("-------------------------------------------------------------");
             word = getStringFromCommandLine(scanner);
             if(!word.equals("q")) {
                 RegExSearch search = new RegExSearch();
                 contWord = search.search(text, word);
-                File fileResult = new File("result.txt");
 
                 try (FileWriter fileWriter = new FileWriter(fileResult, fileResult.exists())) {
                     fileWriter.write(fileName.getName() + " - " + word + " - " + contWord + "\n");
@@ -88,8 +76,30 @@ public class WorkWithFilesMain {
      * @param scanner
      * @return String  - введенная пользователем строка
      */
-    public static String getStringFromCommandLine(Scanner scanner) {
+    public  static String getStringFromCommandLine(Scanner scanner) {
         return scanner.nextLine();
+    }
+
+    /**
+     * метод совершае опрос юзера до получения коректного(существующего) имени директории
+     * @param scanner
+     * @return имя папки
+     */
+    public static File tryGetNameOfDir(Scanner scanner){
+        File dir;
+        boolean flag;
+
+        do{
+            dir = new File(getStringFromCommandLine(scanner));
+            if(!dir.exists()){
+                System.out.println("Неправильное имя или не существует.\n" +
+                                   "Bведите еще раз ---->");
+                flag = true;
+            }else{
+                flag = false;
+            }
+        }while (flag);
+        return dir;
     }
 
 
